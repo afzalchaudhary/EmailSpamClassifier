@@ -5,8 +5,14 @@ import os
 import string
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
-nltk.download('stopwords')
-nltk.download('punkt')
+
+@st.cache_resource
+def setup_nltk():
+    nltk.download('punkt')
+    nltk.download('stopwords')
+
+setup_nltk()
+
 ps = PorterStemmer()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -14,6 +20,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 def transform_text(text):
   text = text.lower()
   text = nltk.word_tokenize(text)
+
   y=[]
   for i in text:
     if i.isalnum():
