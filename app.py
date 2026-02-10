@@ -9,6 +9,7 @@ from nltk.stem.porter import PorterStemmer
 @st.cache_resource
 def setup_nltk():
     nltk.download('punkt')
+    nltk.download('punkt_tab')
     nltk.download('stopwords')
 
 setup_nltk()
